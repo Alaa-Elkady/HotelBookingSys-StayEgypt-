@@ -1,0 +1,61 @@
+import logo from "../Pics/logo.png";
+import { Link } from "react-router-dom";
+
+export function Header() {
+  return (
+    <div className="w-full flex flex-wrap justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-50">
+      {/* logo */}
+      <Link to="/">
+        <img className="w-[150px]" src={logo} alt="logo" />
+      </Link>
+
+      {/* pages */}
+      <div className="text-[#2c4c74] text-lg flex flex-wrap items-center">
+        <Link
+          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+          to="/about"
+        >
+          About
+        </Link>
+        <Link
+          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+          to="/hotels"
+        >
+          Hotels
+        </Link>
+        <Link
+          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+          to="/contact"
+        >
+          Contact
+        </Link>
+      </div>
+
+      {/* buttons */}
+      <div className="flex items-center mt-2 sm:mt-0">
+        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full mr-4 hover:bg-[#1e3552] transition">
+          <Link to="/signin">Sign In</Link>
+        </button>
+        <div className="mr-2 text-gray-400">|</div>
+        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition">
+          <Link to="/signup">Sign Up</Link>
+        </button>
+      </div>
+
+      {/* guest name and logout */}
+      <div className="flex items-center hidden">
+        <i className="fa-solid fa-user text-[#2c4c74] mr-4"></i>
+        <span className="text-[#2c4c74] mr-4">Guest</span>
+        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition">
+          Logout
+        </button>
+      </div>
+    </div>
+  );
+}
