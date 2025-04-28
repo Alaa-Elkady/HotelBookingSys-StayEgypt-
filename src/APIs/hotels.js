@@ -352,7 +352,7 @@ export const Hotels= [
     "HotelPrice": "22.000",
     "HotelRating": "4.8",
     "HotelRooms": "331",
-    "HotelImage": "https://www.ritzcarlton.com/-/media/ritz-carlton/hotels/egypt/cairo/hero-images/rc_cai_hero_1.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/456051765.jpg?k=03bf475a247082e40c31debabffde61ec61d622961979e383eefd689dec8a2c9&o=&hp=1",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -386,7 +386,7 @@ export const Hotels= [
     "HotelPrice": "18.500",
     "HotelRating": "4.7",
     "HotelRooms": "331",
-    "HotelImage": "https://www.marriott.com/content/dam/marriott-renditions/CAIMH/CAIMH_hero_1600x800.jpg",
+    "HotelImage": "https://www.cairotoptours.com/storage/2417/conversions/Marriott%20Mena%20House%20%7C%20Abercrombie%20&%20Kent-webp.webp",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -453,7 +453,7 @@ export const Hotels= [
     "HotelPrice": "22.000",
     "HotelRating": "4.8",
     "HotelRooms": "409",
-    "HotelImage": "https://theluxuryeditor.com/wp-content/uploads/2024/12/steigenberger-ras-soma.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/292332205.jpg?k=20c2261b05bfbd0fea5cc92b42e4d9a6f965af5a15cb39e64f53465c27bc421c&o=&hp=1",
     "HotelServices": [
       "Private Beach",
       "5 Restaurants",
@@ -516,7 +516,7 @@ export const Hotels= [
     "HotelPrice": "18.000",
     "HotelRating": "4.8",
     "HotelRooms": "395",
-    "HotelImage": "https://www.jaz.travel/media/1187/jaz-almaza-beach-resort.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/491550403.jpg?k=50a7b6b3b4480d095f9fb01294285a45dfc488dc30b4119b2c1daef9a3286d2e&o=&hp=1",
     "HotelServices": [
       "Private Beach",
       "Multiple Restaurants",
@@ -549,7 +549,7 @@ export const Hotels= [
     "HotelPrice": "15.000",
     "HotelRating": "4.5",
     "HotelRooms": "500",
-    "HotelImage": "https://www.porto-group.com/sites/default/files/styles/large/public/2020-02/porto-matrouh-beach-resort.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/248780460.jpg?k=981198e854dc6d744ee1ac22313e4f355b32b34d40a84a7c9c739517c4ee8651&o=&hp=1",
     "HotelServices": [
       "Private Beach",
       "Multiple Restaurants",
@@ -582,7 +582,7 @@ export const Hotels= [
     "HotelPrice": "12.000",
     "HotelRating": "4.2",
     "HotelRooms": "150",
-    "HotelImage": "https://www.beausitehotel.com/images/hotel.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/14527868.jpg?k=d58ab17daec2fe67166f7fd254928ca5c283b665f3bbab0de18167e5ebb3ade9&o=&hp=1",
     "HotelServices": [
       "Private Beach",
       "Restaurant",
@@ -613,7 +613,7 @@ export const Hotels= [
     "HotelPrice": "12.000",
     "HotelRating": "4.9",
     "HotelRooms": "86",
-    "HotelImage": "https://media.accorhotels.com/media/4536/sofitel-winter-palace-luxor.jpg",
+    "HotelImage": "https://phgcdn.com/images/uploads/LXRSW/masthead/LXRSW-masthead-egypt-ofitelwinterpalaceluxor.jpg",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -644,7 +644,7 @@ export const Hotels= [
     "HotelPrice": "8.500",
     "HotelRating": "4.5",
     "HotelRooms": "124",
-    "HotelImage": "https://www.luxorhotel.com/images/hero-image.jpg",
+    "HotelImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Luxor_Hotel.jpg/1024px-Luxor_Hotel.jpg",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -674,7 +674,7 @@ export const Hotels= [
     "HotelPrice": "18.000",
     "HotelRating": "4.8",
     "HotelRooms": "304",
-    "HotelImage": "https://www.steigenberger.com/hotel-nile-palace.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/524869553.jpg?k=f296b9d72f6e9ea5ed8802ef2167ce8c52ca402b2d9e5db3bdb1dbe5f991db87&o=&hp=1",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -705,7 +705,7 @@ export const Hotels= [
     "HotelPrice": "15.000",
     "HotelRating": "4.9",
     "HotelRooms": "230",
-    "HotelImage": "https://www.movenpick.com/aswan.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/626262953.jpg?k=bb6fd7c187eab6336ae2f99a4f6b545f582e1f2ca62f1dff79a752e2bf72d5f1&o=&hp=1",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -736,7 +736,7 @@ export const Hotels= [
     "HotelPrice": "9.500",
     "HotelRating": "4.4",
     "HotelRooms": "390",
-    "HotelImage": "https://www.pyramisa-hotels.com/isis.jpg",
+    "HotelImage": "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/http://images.ntmllc.com/v4/hotel/N63/N63442/N63442_EXT_Z1CE95/Pyramisa-Isis-Island-Resort-%26-Spa-Exterior.jpg?tr=w-1100%2Ch-654%2Cfo-auto",
     "HotelServices": [
       "Beach",
       "Free Wi-Fi",
@@ -766,7 +766,7 @@ export const Hotels= [
     "HotelPrice": "28.000",
     "HotelRating": "5.0",
     "HotelRooms": "138",
-    "HotelImage": "https://www.sofitel.com/aswan.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/326740590.jpg?k=c54a594ea58cfa1646b93e90c21734e7b0990491810542dac02975b224eef85c&o=&hp=1",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -797,7 +797,7 @@ export const Hotels= [
     "HotelPrice": "6.500",
     "HotelRating": "4.7",
     "HotelRooms": "56",
-    "HotelImage": "https://www.dahabparadise.com/images/hero.jpg",
+    "HotelImage": "https://images.squarespace-cdn.com/content/v1/533984a1e4b088ba35560f57/1415919958723-WEPB0M03I9C9J93QLL7J/home-dahab-paradise-front-bg-1080.jpg?format=2500w",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -827,7 +827,7 @@ export const Hotels= [
     "HotelPrice": "14.000",
     "HotelRating": "4.8",
     "HotelRooms": "182",
-    "HotelImage": "https://www.lemeridien.com/dahab.jpg",
+    "HotelImage": "https://le-meridien-dahab-resort.albooked.com/data/Photos/OriginalPhoto/14986/1498613/1498613302/Retac-Qunay-Dahab-Resort-Spa-Exterior.JPEG",
     "HotelServices": [
       "Restaurant",
       "Free Wi-Fi",
@@ -857,7 +857,7 @@ export const Hotels= [
     "HotelPrice": "5.500",
     "HotelRating": "4.6",
     "HotelRooms": "64",
-    "HotelImage": "https://www.bluebeachclub.com/images/hero.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/5404311.jpg?k=6e9b43280d025622048116e8e6ec319f3685d80a0a6abe27fcab74260baba9a0&o=&hp=1",
     "HotelServices": [
       "Restaurant",
       "Free Wi-Fi",
@@ -886,7 +886,7 @@ export const Hotels= [
     "HotelPrice": "7.000",
     "HotelRating": "4.4",
     "HotelRooms": "120",
-    "HotelImage": "https://www.portsaidhotel.com/hero.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/209018494.jpg?k=2c05e9610868ba9e19c5d2bd936fffabfa3eb0323b8bcf369d87e9271fa2182c&o=&hp=1",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -915,7 +915,7 @@ export const Hotels= [
     "HotelPrice": "8.000",
     "HotelRating": "4.6",
     "HotelRooms": "150",
-    "HotelImage": "https://www.cataracthotel.com/portsaid.jpg",
+    "HotelImage": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/10/b8/27/6c/swimming-pool-at-the.jpg?w=900&h=-1&s=1",
     "HotelServices": [
       "Restaurant",
       "Free Wi-Fi",
@@ -944,7 +944,7 @@ export const Hotels= [
     "HotelPrice": "5.500",
     "HotelRating": "4.2",
     "HotelRooms": "80",
-    "HotelImage": "https://www.seaviewhotel.com/portsaid.jpg",
+    "HotelImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa3tEWD8Egm22rA_AlAoduJEck6sFO4_YTiw&s",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -972,7 +972,7 @@ export const Hotels= [
     "HotelPrice": "9.500",
     "HotelRating": "4.6",
     "HotelRooms": "150",
-    "HotelImage": "https://www.mercure.com/suez.jpg",
+    "HotelImage": "https://pix10.agoda.net/hotelImages/63515/-1/2a6caaa6bb9e6746e7dd4e85373abdee.jpg?ce=0&s=414x232",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -1002,7 +1002,7 @@ export const Hotels= [
     "HotelPrice": "6.000",
     "HotelRating": "4.1",
     "HotelRooms": "80",
-    "HotelImage": "https://www.alhayathotel.com/suez.jpg",
+    "HotelImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrxG8Rkmm3CQXBiB0F7Q-V2lD6YlcHfc5bjQ&s",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -1024,40 +1024,13 @@ export const Hotels= [
     "HotelWebsite": "https://www.alhayathotel.com"
   },
   {
-    "id": "33",
-    "HotelName": "Shagaret El Dor Hotel",
-    "HotelLocation": "Suez",
-    "HotelPrice": "5.000",
-    "HotelRating": "3.8",
-    "HotelRooms": "60",
-    "HotelImage": "https://www.shagareteldor.com/suez.jpg",
-    "HotelServices": [
-      "Restaurant",
-      "Free Wi-Fi",
-      "Room Service"
-    ],
-    "HotelDescription": "A comfortable hotel offering a quiet environment and basic amenities for a peaceful stay.",
-    "HotelReviews": [
-      {
-        "reviewerName": "Hassan Mohamed",
-        "review": "Nice location with a calm atmosphere. Clean rooms and good service."
-      },
-      {
-        "reviewerName": "Amira Abdelkader",
-        "review": "Simple but nice. The staff were polite, and the food was satisfactory."
-      }
-    ],
-    "HotelPhone": "+20 62 225 5666",
-    "HotelWebsite": "https://www.shagareteldor.com"
-  },
-  {
     "id": "34",
     "HotelName": "Tanta Royal Hotel",
     "HotelLocation": "Tanta",
     "HotelPrice": "4.500",
     "HotelRating": "4.2",
     "HotelRooms": "100",
-    "HotelImage": "https://www.tantaroyal.com/tanta.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/466054739.jpg?k=dbca5f325d02be1ab27639e172fa686e6eb4c11b3833fb38fcbb2c1827d00a61&o=&hp=1",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -1080,41 +1053,13 @@ export const Hotels= [
     "HotelWebsite": "https://www.tantaroyal.com"
   },
   {
-    "id": "35",
-    "HotelName": "Al Ezz Hotel",
-    "HotelLocation": "Tanta",
-    "HotelPrice": "3.000",
-    "HotelRating": "3.9",
-    "HotelRooms": "60",
-    "HotelImage": "https://www.alezzhotel.com/tanta.jpg",
-    "HotelServices": [
-      "Restaurant",
-      "Room Service",
-      "Free Wi-Fi",
-      "Laundry Service"
-    ],
-    "HotelDescription": "A simple and affordable hotel with basic amenities, offering a quiet atmosphere for relaxation.",
-    "HotelReviews": [
-      {
-        "reviewerName": "Mahmoud Fathi",
-        "review": "A budget-friendly option for a short stay. The staff was friendly and helpful."
-      },
-      {
-        "reviewerName": "Noha Fawzy",
-        "review": "Good for its price range. The location is convenient for local attractions."
-      }
-    ],
-    "HotelPhone": "+20 40 232 1234",
-    "HotelWebsite": "https://www.alezzhotel.com"
-  },
-  {
     "id": "36",
     "HotelName": "The Nile Hotel Tanta",
     "HotelLocation": "Tanta",
     "HotelPrice": "5.500",
     "HotelRating": "4.4",
     "HotelRooms": "75",
-    "HotelImage": "https://www.nilehotel.com/tanta.jpg",
+    "HotelImage": "https://ik.imgkit.net/3vlqs5axxjf/external/ik-seo/https://media.iceportal.com/167018/photos/83125439_XL/Cairo-Grand-Nile.jpg?tr=w-360%2Ch-216%2Cfo-auto",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -1142,7 +1087,7 @@ export const Hotels= [
     "HotelPrice": "10.000",
     "HotelRating": "4.7",
     "HotelRooms": "200",
-    "HotelImage": "https://www.movenpick.com/hero-faiyum.jpg",
+    "HotelImage": "https://bo.egyblanco.net/UploadFiles/Offers/(1196).jpg",
     "HotelServices": [
       "Restaurant",
       "Bar",
@@ -1173,7 +1118,7 @@ export const Hotels= [
     "HotelPrice": "7.500",
     "HotelRating": "4.5",
     "HotelRooms": "120",
-    "HotelImage": "https://www.horusresort.com/faiyum.jpg",
+    "HotelImage": "https://lh6.googleusercontent.com/proxy/kaTu1zdq6Wn1oSBY3nZQGb9FoRlNfMpMnnVf0sWx_hA3e9Skg-PEmjuvpFBP6dInYuuttvZRmZUKMmweRT-6vA7NvZQOKg",
     "HotelServices": [
       "Outdoor Pool",
       "Restaurant",
@@ -1203,7 +1148,7 @@ export const Hotels= [
     "HotelPrice": "6.000",
     "HotelRating": "4.3",
     "HotelRooms": "80",
-    "HotelImage": "https://www.faiyumgrand.com/faiyum.jpg",
+    "HotelImage": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/ee/97/d6/general-area-of-the-pool.jpg?w=1200&h=-1&s=1",
     "HotelServices": [
       "Free Wi-Fi",
       "Restaurant",
@@ -1233,7 +1178,7 @@ export const Hotels= [
     "HotelPrice": "7.200",
     "HotelRating": "4.5",
     "HotelRooms": "65",
-    "HotelImage": "https://example.com/lakeviewfaiyum.jpg",
+    "HotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/174693678.jpg?k=498bcf86dcab02b9b13464d2f1754b515371c60941ca40d7ceedd7fbe0b729a1&o=&hp=1",
     "HotelServices": [
       "Outdoor Pool",
       "Restaurant",

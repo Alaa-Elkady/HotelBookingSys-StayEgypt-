@@ -1,23 +1,35 @@
 import { Hotels } from "../APIs/hotels";
+import { motion } from "framer-motion";
+
 export function TopHotels() {
   return (
     <div className="w-full flex flex-col items-center justify-center">
       {/* title */}
-      <div className="row text-[#2c4c74] flex items-center justify-center my-4 p-4 border-1 rounded-full  ">
-        <i class="fa-solid fa-hotel text-3xl"></i>
-        <span style={{ fontFamily: "Kaushan Script" }} className="text-4xl">
+      <motion.div
+        className="row text-[#2c4c74] flex items-center justify-center my-4 p-4 border-1 rounded-full"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
+        <i className="fa-solid fa-hotel text-3xl"></i>
+        <span style={{ fontFamily: "Kaushan Script" }} className="text-4xl ml-2">
           Top Hotels
         </span>
-      </div>
-      
+      </motion.div>
+
       {/* cards */}
       <div className="row w-full flex flex-wrap items-center justify-center p-4 gap-4">
         {Hotels.filter((hotel) => hotel.HotelRating >= 4.9)
           .splice(0, 5)
-          .map((hotel) => (
-            <div
+          .map((hotel, index) => (
+            <motion.div
               key={hotel.id}
               className="relative group w-[200px] h-[200px] bg-gray-200 rounded-full my-4 overflow-hidden hover:scale-105 transition duration-300"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.2, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}  // amount 0.3 يعني يبدأ لما 30% من العنصر يظهر
             >
               <img
                 src={hotel.HotelImage}
@@ -30,9 +42,10 @@ export function TopHotels() {
               >
                 {hotel.HotelName}
               </div>
-            </div>
+            </motion.div>
           ))}
       </div>
     </div>
   );
 }
+
