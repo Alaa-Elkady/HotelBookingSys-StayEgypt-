@@ -1,7 +1,12 @@
 import logo from "../Pics/logo.png";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutGuest } from "../Redux/GuestSlice";
 
 export function Header() {
+  const guest = useSelector((state) => state.guest.guest);
+  const dispatch = useDispatch();
+
   return (
     <div className="w-full flex flex-wrap justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-50">
       {/* logo */}
@@ -35,27 +40,47 @@ export function Header() {
         >
           Contact
         </Link>
+        {
+          guest && (
+            <Link
+              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+              to={`/bookings/${guest.id}`}
+            >
+              Bookings
+            </Link>
+          )
+        }
       </div>
 
       {/* buttons */}
-      <div className="flex items-center mt-2 sm:mt-0">
-        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full mr-4 hover:bg-[#1e3552] transition">
-          <Link to="/signin">Sign In</Link>
-        </button>
-        <div className="mr-2 text-gray-400">|</div>
-        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition">
-          <Link to="/signup">Sign Up</Link>
-        </button>
-      </div>
+      {!guest && (
+        <div className="flex items-center mt-2 sm:mt-0">
+          <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full mr-4 hover:bg-[#1e3552] transition">
+            <Link to="/signin">Sign In</Link>
+          </button>
+          <div className="mr-2 text-gray-400">|</div>
+          <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition">
+            <Link to="/signup">Sign Up</Link>
+          </button>
+        </div>
+      )}
 
       {/* guest name and logout */}
-      <div className="flex items-center hidden">
-        <i className="fa-solid fa-user text-[#2c4c74] mr-4"></i>
-        <span className="text-[#2c4c74] mr-4">Guest</span>
-        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition">
-          Logout
-        </button>
-      </div>
+      {guest && (
+        <div className="flex items-center">
+          <Link to={`/profile/${guest.id}`} className="cursor-pointer">
+            <i className="fa-solid fa-user text-[#2c4c74] mr-4"></i>
+          </Link>
+          <span className="text-[#2c4c74] mr-4">{guest.FirstName}</span>
+
+          <button
+            onClick={() => dispatch(logoutGuest())}
+            className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition"
+          >
+            <i className="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

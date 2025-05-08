@@ -10,8 +10,18 @@ import { HotelsPage } from "./Pages/Hotels";
 import { HotelDetails } from "./Pages/HotelDetails";
 import { Profile } from "./Pages/Profile";
 import { Bookings } from "./Pages/Bookings";
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setGuestInfo } from "./Redux/GuestSlice";
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const storedGuest = localStorage.getItem("guestInfo");
+    if (storedGuest) {
+      dispatch(setGuestInfo(JSON.parse(storedGuest)));
+    }
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
