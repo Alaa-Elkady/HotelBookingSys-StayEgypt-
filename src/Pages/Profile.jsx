@@ -2,11 +2,13 @@ import { useSelector } from "react-redux";
 import male from "../Pics/male.jpg";
 import female from "../Pics/female.jpg";
 import { ProfileInfo } from "../Components/ProfileInfo";
+import { Favourite } from "../Components/Favourite";
 import { useState } from "react";
 import { EditProfile } from "../Components/EditProfile";
 export function Profile() {
   const guest = useSelector((state) => state.guest.guest);
   const [edit, setEdit] = useState(false);
+  const [fav, setFav] = useState(false);
   console.log(guest);
   if (!guest) {
     return (
@@ -16,9 +18,6 @@ export function Profile() {
     );
   }
 
-  function editBtn() {
-    setEdit(true);
-  }
   return (
     <div className="flex flex-col md:flex-row  h-full min-h-screen w-full ">
       <div className="w-[400px]  bg-[#2c4c74]  p-4 flex flex-col items-center text-white">
@@ -39,17 +38,27 @@ export function Profile() {
           {
             label: "My Profile",
             icon: <i className="fa-solid fa-user"></i>,
-            onclick: () => setEdit(false),
+            onclick: () => {
+              setEdit(false);
+              setFav(false);
+            },
           },
           {
             label: "Edit Profile",
             icon: <i className="fa-solid fa-user-pen"></i>,
-            onclick: editBtn,
+            onclick: () => {
+              setEdit(true);
+              setFav(false);
+            },
           },
           { label: "Bookings", icon: <i className="fa-solid fa-hotel"></i> },
           {
             label: "Favourite Hotels",
             icon: <i className="fa-solid fa-star"></i>,
+            onclick: () => {
+              setFav(true);
+              setEdit(false);
+            },
           },
         ].map((item, index) => (
           <button
@@ -61,14 +70,19 @@ export function Profile() {
           </button>
         ))}
       </div>
-      {!edit && (
+      {!edit && !fav && (
         <div className="w-full flex flex-col items-left  p-4">
           <ProfileInfo />
         </div>
       )}
-      {edit && (
+      {edit && !fav && (
         <div className="w-full flex flex-col items-left justify-center p-4">
           <EditProfile />
+        </div>
+      )}
+      {fav && !edit && (
+        <div className="w-full flex flex-col items-left  p-4">
+          <Favourite />
         </div>
       )}
     </div>

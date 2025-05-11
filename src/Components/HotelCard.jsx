@@ -1,7 +1,7 @@
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-import { motion } from 'framer-motion';
-
-export function HotelCard ({ hotel })  {
+export function HotelCard({ hotel }) {
   return (
     <motion.div
       className="w-[90%] md:w-[70%] border-b border-gray-300 flex flex-col md:flex-row justify-between p-4 shadow-lg rounded-lg"
@@ -18,7 +18,7 @@ export function HotelCard ({ hotel })  {
       <div className="flex-1 flex flex-col items-start justify-center p-4">
         <p className="text-2xl font-bold text-[#2c4c74]">
           {hotel.HotelName}
-        </p>
+          </p>
         <p className="text-sm my-1">
           <i className="fa-solid fa-location-dot mr-2 text-[#2c4c74]"></i>
           {hotel.HotelLocation}
@@ -43,9 +43,12 @@ export function HotelCard ({ hotel })  {
         </div>
       </div>
       <div className="flex items-center justify-center p-4">
-        <button className="bg-[#2c4c74] text-white px-4 py-2 rounded-lg hover:bg-[#1b3657] transition">
+        <Link
+          to={`/hotels/${hotel.id}`}
+          className="bg-[#2c4c74] text-white px-4 py-2 rounded-lg hover:bg-[#1b3657] transition"
+        >
           Details
-        </button>
+        </Link>
       </div>
     </motion.div>
   );

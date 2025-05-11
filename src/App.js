@@ -10,6 +10,7 @@ import { HotelsPage } from "./Pages/Hotels";
 import { HotelDetails } from "./Pages/HotelDetails";
 import { Profile } from "./Pages/Profile";
 import { Bookings } from "./Pages/Bookings";
+import { BookingForm } from "./Pages/BookingForm";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setGuestInfo } from "./Redux/GuestSlice";
@@ -36,6 +37,7 @@ function App() {
           <Route path="/hotels/:id" element={<HotelDetails />} />
           <Route path="/profile/:guestId" element={<Profile />} />
           <Route path="/bookings/:guestId" element={<Bookings />} />
+          <Route path='/booking/:hotelId' element={<BookingForm />} />
         </Routes>
         <Footer />
       </BrowserRouter>

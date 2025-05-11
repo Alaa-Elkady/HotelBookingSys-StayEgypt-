@@ -53,6 +53,8 @@ export function SignUp() {
     Country: country,
     City: city,
     MaritalStatus: maritalStatus,
+    FavoriteHotels:[],
+    Bookings:[]
   };
   function handleSubmit(e) {
     e.preventDefault();
