@@ -2,12 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setGuestInfo } from "../Redux/GuestSlice";
-
+import { Toast } from "./Toast";
 export function EditProfile() {
   const guest = useSelector((state) => state.guest.guest);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [formData, setFormData] = useState({
     FirstName: guest.FirstName,
     LastName: guest.LastName,
@@ -35,17 +35,26 @@ export function EditProfile() {
       .then((res) => res.json())
       .then((updatedGuest) => {
         dispatch(setGuestInfo(updatedGuest));
-        alert("Profile updated successfully!");
-        navigate("/profile/" + guest.id);
+        setToast({
+          show: true,
+          message: "Profile updated successfully!",
+          type: "success",
+        });
+        setTimeout(() => {
+          navigate("/profile/" + guest.id);
+        }, 3000);
       })
       .catch((error) => {
-        console.error("Error updating profile:", error);
-        alert("Something went wrong, please try again.");
+        setToast({
+          show: true,
+          message: "Something went wrong, please try again.",
+          type: "error",
+        });
       });
   }
 
   return (
-    <div>
+    <div className="w-full flex flex-col items-center p-4">
       <h1
         style={{ fontFamily: "Kaushan Script" }}
         className="text-3xl font-bold text-[#2c4c74] my-6 text-center"
@@ -53,7 +62,10 @@ export function EditProfile() {
         Edit Your Profile
       </h1>
 
-      <form onSubmit={handleSave} className="w-full max-w-md space-y-4">
+      <form
+        onSubmit={handleSave}
+        className="w-full max-w-lg bg-white shadow-md rounded-xl p-6 space-y-5"
+      >
         {[
           { label: "First Name", name: "FirstName" },
           { label: "Last Name", name: "LastName" },
@@ -64,7 +76,7 @@ export function EditProfile() {
           { label: "City", name: "City" },
         ].map((field) => (
           <div key={field.name}>
-            <label className="block text-[#2c4c74] font-bold mb-2">
+            <label className="block text-[#2c4c74] font-bold mb-1">
               {field.label}
             </label>
             <input
@@ -72,18 +84,25 @@ export function EditProfile() {
               name={field.name}
               value={formData[field.name]}
               onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#2c4c74]"
+              className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#2c4c74] transition"
             />
           </div>
         ))}
 
         <button
           type="submit"
-          className="w-full bg-[#2c4c74] text-white p-2 rounded hover:bg-[#1e3552] transition"
+          className="w-full bg-[#2c4c74] text-white p-3 rounded hover:bg-[#1e3552] transition text-lg font-bold"
         >
           Save Changes
         </button>
       </form>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </div>
   );
 }

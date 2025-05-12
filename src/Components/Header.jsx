@@ -28,18 +28,19 @@ export function Header() {
         >
           About
         </Link>
+         <Link
+          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+          to="/contact"
+        >
+          Contact
+        </Link>
         <Link
           className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
           to="/hotels"
         >
           Hotels
         </Link>
-        <Link
-          className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
-          to="/contact"
-        >
-          Contact
-        </Link>
+       
         {
           guest && (
             <Link

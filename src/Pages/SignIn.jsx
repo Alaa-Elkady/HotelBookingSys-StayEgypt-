@@ -4,18 +4,21 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setGuestInfo } from "../Redux/GuestSlice";
 import { useNavigate } from "react-router-dom";
-
+import { Toast } from "../Components/Toast";
 export function SignIn() {
   const navigate = useNavigate();
-
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const dispatch = useDispatch();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   function handleSignIn(e) {
     e.preventDefault();
     if (!email || !password) {
-      alert("Please enter email and password.");
+      setToast({
+        show: true,
+        message: "Please fill in all required fields.",
+        type: "error",
+      });
       return;
     }
 
@@ -27,10 +30,20 @@ export function SignIn() {
       .then((data) => {
         if (data.length > 0) {
           dispatch(setGuestInfo(data[0]));
-          console.log("User found:", data[0]);
-          navigate("/");
+          setToast({
+            show: true,
+            message: "Signed in successfully!",
+            type: "success",
+          });
+          setTimeout(() => {
+            navigate("/profile/" + data[0].id);
+          }, 3000);
         } else {
-          alert("Invalid email or password");
+          setToast({
+            show: true,
+            message: "Invalid email or password.",
+            type: "error",
+          });
         }
       });
   }
@@ -86,6 +99,13 @@ export function SignIn() {
           SignIn
         </button>
       </motion.div>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </div>
   );
 }

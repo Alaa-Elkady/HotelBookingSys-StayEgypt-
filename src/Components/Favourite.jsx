@@ -3,7 +3,10 @@ import { Hotels } from "../APIs/hotels";
 import { useSelector } from "react-redux";
 export function Favourite() {
   const guest = useSelector((state) => state.guest.guest);
-  const hotels = Hotels.filter((hotel) => hotel.id == guest.FavoriteHotels);
+  const hotels = Hotels.filter(
+    (hotel) => guest.FavoriteHotels && guest.FavoriteHotels.includes(hotel.id)
+  );
+
   return (
     <>
       <div
@@ -26,11 +29,7 @@ export function Favourite() {
             alt="img"
           />
           <div className="flex-1 flex flex-col items-start justify-center p-4">
-            <p
-              className="text-2xl  text-[#2c4c74]"
-            >
-              {hotel.HotelName}
-            </p>
+            <p className="text-2xl  text-[#2c4c74]">{hotel.HotelName}</p>
             <p className="text-sm my-1">
               <i className="fa-solid fa-location-dot mr-2 text-[#2c4c74]"></i>
               {hotel.HotelLocation}

@@ -4,34 +4,44 @@ import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { setGuestInfo } from "../Redux/GuestSlice";
-
+import { useState } from "react";
+import { Toast } from "../Components/Toast";
 export function HotelDetails() {
   const id = useParams().id;
   const currentHotel = Hotels.find((hotel) => hotel.id === id);
   const guest = useSelector((state) => state.guest.guest);
   const dispatch = useDispatch();
-
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
   // Handle the case when hotel is not found
   if (!currentHotel) {
-    return <p>Hotel not found!</p>;
+    setToast({
+      show: true,
+      message: "Hotel not found",
+      type: "error",
+    });
   }
 
-  // Check if guest is logged in
   if (!guest) {
-    return <p>Guest not logged in!</p>;
+    setToast({
+      show: true,
+      message: "Guest not logged in",
+      type: "error",
+    });
   }
 
   function addToFav(hotel) {
     if (!guest || !guest.id) {
-      alert("Guest not logged in or missing ID");
+      setToast({
+        show: true,
+        message: "Guest not logged in or missing ID",
+        type: "error",
+      });
       return;
     }
 
     const currentFavorites = Array.isArray(guest.FavoriteHotels)
       ? guest.FavoriteHotels
       : [];
-
-    console.log("Adding to favorites for guest ID:", guest.id); // Add a log here
 
     fetch(`http://localhost:8080/guests/${guest.id}`, {
       method: "PATCH",
@@ -45,19 +55,31 @@ export function HotelDetails() {
       .then((response) => {
         if (!response.ok) {
           return response.text().then((text) => {
-            throw new Error(text || "Failed to update favorites");
+            setToast({
+              show: true,
+              message: "Something went wrong, please try again.",
+              type: "error",
+            });
           });
         }
         return response.json();
       })
       .then((data) => {
-        console.log("Favorite hotel added successfully:", data);
-        alert("Added to favorites!");
-        dispatch(setGuestInfo(data)); // Update guest info with new favorites
+        setToast({
+          show: true,
+          message: "Hotel added to favorites!",
+          type: "success",
+        });
+        dispatch(
+          setGuestInfo({ ...guest, FavoriteHotels: data.FavoriteHotels })
+        );
       })
       .catch((error) => {
-        console.error("Error adding to favorites:", error);
-        alert("Something went wrong! Please try again later.");
+        setToast({
+          show: true,
+          message: "Something went wrong, please try again.",
+          type: "error",
+        });
       });
   }
 
@@ -174,7 +196,10 @@ export function HotelDetails() {
           transition={{ duration: 0.7 }}
           className="flex w-[200px] flex-col justify-center items-center m-4"
         >
-          <Link to={`/booking/${currentHotel.id}`} className="text-center m-2 p-2 w-full rounded-lg bg-[#2c4c74] text-white">
+          <Link
+            to={`/booking/${currentHotel.id}`}
+            className="text-center m-2 p-2 w-full rounded-lg bg-[#2c4c74] text-white"
+          >
             Book Now
           </Link>
           <button
@@ -185,6 +210,13 @@ export function HotelDetails() {
           </button>
         </motion.div>
       </div>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </div>
   );
 }

@@ -3,9 +3,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setGuestInfo } from "../Redux/GuestSlice";
 import { useNavigate } from "react-router-dom";
-
+import { Toast } from "../Components/Toast";
 export function SignUp() {
   const navigate = useNavigate();
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
 
   const dispatch = useDispatch();
 
@@ -48,22 +49,25 @@ export function SignUp() {
     DateOfBirth: dateOfBirth,
     Job: job,
     Gender: gender,
-    NationalID:nid,
+    NationalID: nid,
     Nationality: nationality,
     Country: country,
     City: city,
     MaritalStatus: maritalStatus,
-    FavoriteHotels:[],
-    Bookings:[]
+    FavoriteHotels: [],
+    Bookings: [],
   };
   function handleSubmit(e) {
     e.preventDefault();
     if (!firstName || !email || !password) {
-      alert("Please fill in all required fields.");
+      setToast({
+        show: true,
+        message: "Please fill in all required fields.",
+        type: "error",
+      });
       return;
     }
-    console.log(guest);
-    dispatch(setGuestInfo(guest));
+
     fetch("http://localhost:8080/guests", {
       method: "POST",
       headers: {
@@ -73,9 +77,21 @@ export function SignUp() {
     })
       .then((res) => {
         if (res.ok) {
-          navigate("/");
+          setToast({
+            show: true,
+            message: "Signed up successfully!",
+            type: "success",
+          });
+          dispatch(setGuestInfo(guest));
+          setTimeout(() => {
+            navigate("/profile/" + guest.id);
+          }, 3000);
         } else {
-          alert("Error creating account");
+          setToast({
+            show: true,
+            message: "Something went wrong, please try again.",
+            type: "error",
+          });
         }
       })
       .catch((err) => {
@@ -236,6 +252,13 @@ export function SignUp() {
           </motion.button>
         </motion.div>
       </motion.div>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </motion.div>
   );
 }

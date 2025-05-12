@@ -5,11 +5,14 @@ import { ProfileInfo } from "../Components/ProfileInfo";
 import { Favourite } from "../Components/Favourite";
 import { useState } from "react";
 import { EditProfile } from "../Components/EditProfile";
+import { useNavigate } from "react-router-dom";
+
 export function Profile() {
+  const nav = useNavigate();
   const guest = useSelector((state) => state.guest.guest);
   const [edit, setEdit] = useState(false);
   const [fav, setFav] = useState(false);
-  console.log(guest);
+
   if (!guest) {
     return (
       <div className="text-center text-2xl text-[#2c4c74] mt-10">
@@ -19,21 +22,27 @@ export function Profile() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row  h-full min-h-screen w-full ">
-      <div className="w-[400px]  bg-[#2c4c74]  p-4 flex flex-col items-center text-white">
-        <div className="rounded-full w-[200px] h-[200px] m-4">
-          {guest.Gender === "Male" ? (
-            <img src={male} alt="male" className="rounded-full " />
-          ) : (
-            <img src={female} alt="female" className="rounded-full " />
-          )}
+    <div className="flex flex-col md:flex-row min-h-screen w-full">
+      {/* Sidebar */}
+      <div className="w-full md:w-[350px] bg-[#2c4c74] p-4 flex flex-col items-center text-white">
+        {/* Profile Image */}
+        <div className="rounded-full w-[180px] h-[180px] m-4 overflow-hidden">
+          <img
+            src={guest.Gender === "Male" ? male : female}
+            alt="profile"
+            className="w-full h-full object-cover"
+          />
         </div>
+
+        {/* Name */}
         <p
           style={{ fontFamily: "Kaushan Script" }}
-          className="text-2xl font-bold m-5"
+          className="text-2xl font-bold text-center mb-5"
         >
           {guest.FirstName + " " + guest.LastName}
         </p>
+
+        {/* Sidebar Buttons */}
         {[
           {
             label: "My Profile",
@@ -51,7 +60,13 @@ export function Profile() {
               setFav(false);
             },
           },
-          { label: "Bookings", icon: <i className="fa-solid fa-hotel"></i> },
+          {
+            label: "Bookings",
+            icon: <i className="fa-solid fa-hotel"></i>,
+            onclick: () => {
+              nav(`/bookings/${guest.id}`);
+            },
+          },
           {
             label: "Favourite Hotels",
             icon: <i className="fa-solid fa-star"></i>,
@@ -63,28 +78,20 @@ export function Profile() {
         ].map((item, index) => (
           <button
             key={index}
-            className="bg-white w-[200px] text-[#2c4c74] p-2 m-2 cursor-pointer rounded-full active:bg-[#2c4c74] active:text-white active:scale-90 transition-all duration-300 ease-in-out"
+            className="bg-white w-full max-w-[220px] text-[#2c4c74] p-2 my-2 cursor-pointer rounded-full active:bg-[#2c4c74] active:text-white active:scale-95 transition-all duration-300 ease-in-out"
             onClick={() => item.onclick && item.onclick()}
           >
-            {item.icon} {item.label}
+            {item.icon} <span className="ml-2">{item.label}</span>
           </button>
         ))}
       </div>
-      {!edit && !fav && (
-        <div className="w-full flex flex-col items-left  p-4">
-          <ProfileInfo />
-        </div>
-      )}
-      {edit && !fav && (
-        <div className="w-full flex flex-col items-left justify-center p-4">
-          <EditProfile />
-        </div>
-      )}
-      {fav && !edit && (
-        <div className="w-full flex flex-col items-left  p-4">
-          <Favourite />
-        </div>
-      )}
+
+      {/* Main Content */}
+      <div className="flex-1 p-4 flex flex-col items-start justify-start">
+        {!edit && !fav && <ProfileInfo />}
+        {edit && !fav && <EditProfile />}
+        {fav && !edit && <Favourite />}
+      </div>
     </div>
   );
 }

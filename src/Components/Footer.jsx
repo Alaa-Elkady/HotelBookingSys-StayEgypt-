@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <div className="w-full grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 items-center p-6 border-t border-[#2c4c74] bg-white">
+    <div className="w-full grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 items-center p-6 border-t border-[#2c4c74] bg-white ">
       {/* logo */}
       <div className="w-[200px] mx-auto md:mx-0">
         <img src={logo} alt="logo" />

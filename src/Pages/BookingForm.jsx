@@ -4,12 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { setGuestInfo } from "../Redux/GuestSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Toast } from "../Components/Toast";
 export function BookingForm() {
-    const nav = useNavigate();
+  const nav = useNavigate();
   const hotelId = useParams().hotelId;
   const hotel = Hotels.find((hotel) => hotel.id === hotelId);
   const guest = useSelector((state) => state.guest.guest);
   const dispatch = useDispatch();
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(1);
@@ -33,15 +35,27 @@ export function BookingForm() {
   };
   function book() {
     if (!checkInDate || !checkOutDate) {
-      alert("Please select both check-in and check-out dates.");
+      setToast({
+        show: true,
+        message: "Please select both check-in and check-out dates.",
+        type: "error",
+      });
       return;
     }
     if (checkOutDate <= checkInDate) {
-      alert("Check-out date must be after check-in date.");
+      setToast({
+        show: true,
+        message: "Check-out date must be after check-in date.",
+        type: "error",
+      });
       return;
     }
     if (numberOfGuests < 1 || numberOfRooms < 1) {
-      alert("Guests and Rooms must be at least 1.");
+      setToast({
+        show: true,
+        message: "Guests and Rooms must be at least 1.",
+        type: "error",
+      });
       return;
     }
     const newBookings = Array.isArray(guest.Bookings) ? guest.Bookings : [];
@@ -59,19 +73,31 @@ export function BookingForm() {
       .then((response) => {
         if (!response.ok) {
           return response.text().then((text) => {
-            throw new Error(text || "Failed to update bookings");
+            setToast({
+              show: true,
+              message: "Something went wrong!",
+              type: "error",
+            });
           });
         }
         return response.json();
       })
       .then((data) => {
-        console.log("Booking hotel is done successfully:", data);
-        alert("Added to Bookings!");
-        nav(`/bookings/${guest.id}`)
+        setToast({
+          show: true,
+          message: "Booking hotel is done successfully.",
+          type: "success",
+        });
+        setTimeout(() => {
+          nav(`/bookings/${guest.id}`);
+        }, 3000);
       })
       .catch((error) => {
-        console.error("Error adding to favorites:", error);
-        alert("Something went wrong! Please try again later.");
+        setToast({
+          show: true,
+          message: "Something went wrong!",
+          type: "error",
+        });
       });
   }
   return (
@@ -140,6 +166,13 @@ export function BookingForm() {
           Book Now
         </button>
       </div>
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </div>
   );
 }
