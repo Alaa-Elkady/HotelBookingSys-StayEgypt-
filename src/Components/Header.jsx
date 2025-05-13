@@ -2,20 +2,20 @@ import logo from "../Pics/logo.png";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutGuest } from "../Redux/GuestSlice";
-
+import { useState } from "react";
 export function Header() {
   const guest = useSelector((state) => state.guest.guest);
   const dispatch = useDispatch();
-
+  const [showDropdown, setShowDropdown] = useState(false);
   return (
-    <div className="w-full flex flex-wrap justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-50">
+    <div className="w-full flex flex-wrap justify-between items-center p-4 bg-white shadow-sm sticky top-0 z-50 ">
       {/* logo */}
       <Link to="/">
         <img className="w-[150px]" src={logo} alt="logo" />
       </Link>
 
       {/* pages */}
-      <div className="text-[#2c4c74] text-lg flex flex-wrap items-center">
+      <div className=" hidden md:flex text-[#2c4c74] text-lg flex-wrap items-center ">
         <Link
           className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
           to="/"
@@ -28,7 +28,7 @@ export function Header() {
         >
           About
         </Link>
-         <Link
+        <Link
           className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
           to="/contact"
         >
@@ -40,17 +40,15 @@ export function Header() {
         >
           Hotels
         </Link>
-       
-        {
-          guest && (
-            <Link
-              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
-              to={`/bookings/${guest.id}`}
-            >
-              Bookings
-            </Link>
-          )
-        }
+
+        {guest && (
+          <Link
+            className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+            to={`/bookings/${guest.id}`}
+          >
+            Bookings
+          </Link>
+        )}
       </div>
 
       {/* buttons */}
@@ -82,6 +80,42 @@ export function Header() {
           </button>
         </div>
       )}
+      
+      {/* mobile menu */}
+      <div
+        className="text-[#2c4c74] md:hidden text-2xl cursor-pointer relative"
+        onClick={() => setShowDropdown(!showDropdown)}
+      >
+        <i className="fa-solid fa-bars"></i>
+        {showDropdown && (
+          <div className="w-[200px] bg-white p-4 rounded-lg text-[#2c4c74]  flex flex-col absolute right-0 top-14">
+            <Link
+              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+              to="/"
+            >
+              Home
+            </Link>
+            <Link
+              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+              to="/about"
+            >
+              About
+            </Link>
+            <Link
+              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+              to="/contact"
+            >
+              Contact
+            </Link>
+            <Link
+              className="mr-4 hover:border-b-2 hover:border-[#2c4c74] transition"
+              to="/hotels"
+            >
+              Hotels
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

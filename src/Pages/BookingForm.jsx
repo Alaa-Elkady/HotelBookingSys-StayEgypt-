@@ -58,6 +58,7 @@ export function BookingForm() {
       });
       return;
     }
+
     const newBookings = Array.isArray(guest.Bookings) ? guest.Bookings : [];
     dispatch(setGuestInfo({ ...guest, Bookings: [...newBookings, booking] }));
 
@@ -102,12 +103,15 @@ export function BookingForm() {
   }
   return (
     <div className="flex flex-col items-center">
+      {/* title */}
       <h1
         style={{ fontFamily: "Kaushan Script" }}
         className="text-2xl font-bold text-[#2c4c74] text-center m-4"
       >
         Booking " {hotel.HotelName} " Form
       </h1>
+
+      {/* check-in date */}
       <div className="flex flex-col items-center w-[500px]">
         <div className="w-full m-4 mb-2">
           <p className="text-[#2c4c74]">Check-in Date</p>
@@ -119,6 +123,8 @@ export function BookingForm() {
             min={new Date().toISOString().split("T")[0]}
           />
         </div>
+
+        {/* check-out date */}
         <div className="w-full m-4">
           <p className="text-[#2c4c74]">Check-out Date</p>
           <input
@@ -129,6 +135,8 @@ export function BookingForm() {
             min={checkInDate || new Date().toISOString().split("T")[0]}
           />
         </div>
+
+        {/* number of guests */}
         <input
           className="border border-[#2c4c74] rounded-lg m-4 p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#2c4c74]"
           type="number"
@@ -136,6 +144,8 @@ export function BookingForm() {
           placeholder="Number of guests"
           onChange={(e) => setNumberOfGuests(e.target.value)}
         />
+
+        {/* number of rooms */}
         <input
           className="border border-[#2c4c74] rounded-lg m-4  p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#2c4c74]"
           type="number"
@@ -144,6 +154,7 @@ export function BookingForm() {
           onChange={(e) => setNumberOfRooms(e.target.value)}
         />
 
+        {/*  room type */}
         <select
           value={roomType}
           onChange={(e) => setRoomType(e.target.value)}
@@ -154,11 +165,14 @@ export function BookingForm() {
           <option value="double">double </option>
           <option value="triple">triple </option>
         </select>
+
+        {/* notes */}
         <textarea
           onChange={(e) => setNotes(e.target.value)}
           className="border border-[#2c4c74] rounded-lg m-4 p-2 w-full focus:outline-none focus:ring-2 focus:ring-[#2c4c74]"
           placeholder="Additional Notes"
         />
+
         <button
           onClick={book}
           className="bg-[#2c4c74] text-white rounded-lg p-2 w-full m-4 hover:cursor-pointer "
@@ -166,6 +180,8 @@ export function BookingForm() {
           Book Now
         </button>
       </div>
+      
+      {/* toast */}
       {toast.show && (
         <Toast
           message={toast.message}

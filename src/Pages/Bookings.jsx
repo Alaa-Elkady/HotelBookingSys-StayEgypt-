@@ -77,6 +77,7 @@ export function Bookings() {
   return (
     <>
       <div>
+        {/* Header */}
         <h1
           style={{ fontFamily: "Kaushan Script" }}
           className="text-4xl font-bold text-[#2c4c74] text-center m-4"
@@ -96,6 +97,7 @@ export function Bookings() {
         </div>
       </div>
 
+      {/* bookings card */}
       <div className="min-h-screen flex flex-col items-center w-full p-4">
         {getFilteredBookings().length > 0 ? (
           getFilteredBookings().map((booking) => (
@@ -113,6 +115,8 @@ export function Bookings() {
             {`No ${statusTitles[status]} bookings found.`}
           </div>
         )}
+
+        {/* toast */}
         {toast.show && (
           <Toast
             message={toast.message}
