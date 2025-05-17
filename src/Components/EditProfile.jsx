@@ -16,6 +16,13 @@ export function EditProfile() {
     Address: guest.Address,
     Country: guest.Country,
     City: guest.City,
+    DateOfBirth: guest.DateOfBirth,
+    Job: guest.Job,
+    Gender: guest.Gender,
+    NationalID: guest.NationalID,
+    Nationality: guest.Nationality,
+    MaritalStatus: guest.MaritalStatus,
+
   });
 
   function handleChange(e) {
@@ -74,9 +81,15 @@ export function EditProfile() {
           { label: "Address", name: "Address" },
           { label: "Country", name: "Country" },
           { label: "City", name: "City" },
+          { label: "Date of Birth", name: "DateOfBirth" },
+          { label: "Job", name: "Job" },
+          { label: "Gender", name: "Gender" },
+          { label: "National ID", name: "NationalID" },
+          { label: "Nationality", name: "Nationality" },
+          { label: "Marital Status", name: "MaritalStatus" },
         ].map((field) => (
-          <div key={field.name}>
-            <label className="block text-[#2c4c74] font-bold mb-1">
+          <div key={field.name} className="mb-4  flex">
+            <label className="text-[#2c4c74] font-bold w-[150px] m-1">
               {field.label}
             </label>
             <input

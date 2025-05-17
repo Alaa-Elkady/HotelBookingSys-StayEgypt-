@@ -32,6 +32,7 @@ export function BookingForm() {
     roomType: roomType,
     notes: notes,
     bookingStatus: "Pending",
+    id: guest.Bookings.length + 1,
   };
   function book() {
     if (!checkInDate || !checkOutDate) {
@@ -73,15 +74,12 @@ export function BookingForm() {
     })
       .then((response) => {
         if (!response.ok) {
-          return response.text().then((text) => {
-            setToast({
-              show: true,
-              message: "Something went wrong!",
-              type: "error",
-            });
+          setToast({
+            show: true,
+            message: "Something went wrong!",
+            type: "error",
           });
         }
-        return response.json();
       })
       .then((data) => {
         setToast({
@@ -180,7 +178,7 @@ export function BookingForm() {
           Book Now
         </button>
       </div>
-      
+
       {/* toast */}
       {toast.show && (
         <Toast

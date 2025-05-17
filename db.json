@@ -8,16 +8,17 @@
       "Password": "3092002",
       "Address": "WadiElkamer ,Alexandria",
       "Phone": "01277385872",
-      "DateOfBirth": "00/00/0000",
-      "Job": "",
-      "Gender": "not selected",
+      "DateOfBirth": "30/09/2002",
+      "Job": "web developer",
+      "Gender": "Female",
       "NationalID": "00000000000000",
-      "Nationality": "not selected",
-      "Country": "egypt",
+      "Nationality": "Egyptian",
+      "Country": "Egypt",
       "City": "Alexandria",
-      "MaritalStatus": "not selected",
+      "MaritalStatus": "Single",
       "FavoriteHotels": [
-        "1"
+        "1",
+        "3"
       ],
       "Bookings": [
         {
@@ -32,9 +33,72 @@
           "numberOfRooms": "1",
           "roomType": "triple",
           "notes": "thanks",
-          "bookingStatus": "Pending"
+          "bookingStatus": "Cancelled"
+        },
+        {
+          "hotelId": "1",
+          "hotelName": "Meraki Resort",
+          "hotelImage": "https://www.travilia.com/public/uploads/0000/41/2024/07/20/meraki-resort-sharm-el-sheikh15.jpg",
+          "guestId": "ab54",
+          "guestName": "Alaa Elkady",
+          "checkInDate": "2025-05-29",
+          "checkOutDate": "2025-05-31",
+          "numberOfGuests": "2",
+          "numberOfRooms": "1",
+          "roomType": "Single",
+          "notes": "nnn",
+          "bookingStatus": "Cancelled",
+          "totalPrice": 27.8
+        },
+        {
+          "hotelId": "8",
+          "hotelName": "Hilton Alexandria Corniche",
+          "hotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/490791174.jpg?k=02898bbfa935a122c9816e09ebc1b0bc394b350ef4660cf659c5278247ccb37c&o=&hp=1",
+          "guestId": "ab54",
+          "guestName": "Alaa Elkady",
+          "checkInDate": "2025-05-24",
+          "checkOutDate": "2025-05-29",
+          "numberOfGuests": "1",
+          "numberOfRooms": "1",
+          "roomType": "Single",
+          "notes": "thanks",
+          "bookingStatus": "Cancelled",
+          "totalPrice": 70,
+          "id": 1
+        },
+        {
+          "hotelId": "38",
+          "hotelName": "Horus Resort Faiyum",
+          "hotelImage": "https://lh6.googleusercontent.com/proxy/kaTu1zdq6Wn1oSBY3nZQGb9FoRlNfMpMnnVf0sWx_hA3e9Skg-PEmjuvpFBP6dInYuuttvZRmZUKMmweRT-6vA7NvZQOKg",
+          "guestId": "ab54",
+          "guestName": "Alaa Elkady",
+          "checkInDate": "2025-05-23",
+          "checkOutDate": "2025-05-31",
+          "numberOfGuests": "1",
+          "numberOfRooms": "2",
+          "roomType": "double",
+          "notes": "mmmmm",
+          "bookingStatus": "Confirmed",
+          "totalPrice": 112,
+          "id": 2
+        },
+        {
+          "hotelId": "2",
+          "hotelName": "Rixos Sharm",
+          "hotelImage": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/512913167.jpg?k=202ad883bf7be36def8e706a35a71d693e3f8a35f7e5ec77de2009f175734ad0&o=&hp=1",
+          "guestId": "ab54",
+          "guestName": "Alaa Elkady",
+          "checkInDate": "2025-05-24",
+          "checkOutDate": "2025-05-26",
+          "numberOfGuests": "1",
+          "numberOfRooms": "1",
+          "roomType": "Single",
+          "notes": "thanks",
+          "bookingStatus": "Pending",
+          "id": 5
         }
       ]
     }
-  ]
+  ],
+  "Feedback": []
 }

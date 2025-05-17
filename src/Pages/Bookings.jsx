@@ -1,47 +1,62 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState} from "react";
 import { setGuestInfo } from "../Redux/GuestSlice";
 import { BookingCard } from "../Components/BookingCard";
 import { Toast } from "../Components/Toast";
+
 export function Bookings() {
   const [toast, setToast] = useState({ show: false, message: "", type: "" });
   const guest = useSelector((state) => state.guest.guest);
-  const bookings = guest.Bookings;
+  const bookings = guest?.Bookings || [];
   const dispatch = useDispatch();
   const [status, setStatus] = useState(0);
 
   // Update booking status function
   function updateBookingStatus(guestId, bookingId, newStatus) {
+    // First GET the latest guest data
     fetch(`http://localhost:8080/guests/${guestId}`)
       .then((res) => res.json())
-      .then((guest) => {
-        const updatedBookings = guest.Bookings.map((booking) =>
+      .then((guestData) => {
+        const updatedBookings = guestData.Bookings.map((booking) =>
           booking.id === bookingId
             ? { ...booking, bookingStatus: newStatus }
             : booking
         );
 
+        // Then PATCH updated bookings back
         fetch(`http://localhost:8080/guests/${guestId}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ Bookings: updatedBookings }),
         })
           .then((res) => res.json())
-          .then((data) => {
-            dispatch(setGuestInfo({ ...guest, Bookings: updatedBookings }));
+          .then(() => {
+            // Update Redux state
+            dispatch(setGuestInfo({ ...guestData, Bookings: updatedBookings }));
+
+            // Show success toast
             setToast({
               show: true,
               message: "Booking status updated!",
               type: "success",
             });
           })
-          .catch((err) =>
+          .catch((err) => {
+            console.error(err);
             setToast({
               show: true,
-              message: "Something went wrong, please try again.",
+              message: "Failed to update booking status.",
               type: "error",
-            })
-          );
+            });
+          });
+      })
+      .catch((err) => {
+        console.error(err);
+        setToast({
+          show: true,
+          message: "Failed to fetch guest data.",
+          type: "error",
+        });
       });
   }
 
@@ -74,6 +89,8 @@ export function Bookings() {
     "fa-check animate-bounce",
   ];
 
+  const filteredBookings = getFilteredBookings();
+
   return (
     <>
       <div>
@@ -84,6 +101,8 @@ export function Bookings() {
         >
           Your Bookings
         </h1>
+
+        {/* Status Filter Buttons */}
         <div className="flex items-center justify-center">
           {statusTitles.map((title, idx) => (
             <button
@@ -97,14 +116,14 @@ export function Bookings() {
         </div>
       </div>
 
-      {/* bookings card */}
+      {/* Bookings Cards */}
       <div className="min-h-screen flex flex-col items-center w-full p-4">
-        {getFilteredBookings().length > 0 ? (
-          getFilteredBookings().map((booking) => (
+        {filteredBookings.length > 0 ? (
+          filteredBookings.map((booking) => (
             <BookingCard
               key={booking.id}
               booking={booking}
-              guestId={guest.id}
+              guestId={guest?.id}
               onUpdateStatus={updateBookingStatus}
               isActionable={status === 0}
             />
@@ -116,7 +135,7 @@ export function Bookings() {
           </div>
         )}
 
-        {/* toast */}
+        {/* Toast */}
         {toast.show && (
           <Toast
             message={toast.message}

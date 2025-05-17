@@ -1,6 +1,58 @@
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { Toast } from "../Components/Toast";
+import { useNavigate } from "react-router-dom";
 export function ContactUs() {
+  const [toast, setToast] = useState({ show: false, message: "", type: "" });
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const contactInfo = {
+    fullName: fname + " " + lname,
+    Phone: phone,
+    Email: email,
+    Message: message,
+  };
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!fname || !lname || !phone || !email || !message) {
+      setToast({
+        show: true,
+        message: "Please fill in all required fields",
+        type: "error",
+      });
+    } else {
+      fetch("http://localhost:8080/Feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactInfo),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            setToast({
+              show: true,
+              message: "Something went wrong!",
+              type: "error",
+            });
+          }
+        })
+        .then((data) => {
+          setToast({
+            show: true,
+            message: "Message sent successfully!",
+            type: "success",
+          });
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        });
+    }
+  }
   return (
     <div className="w-full flex flex-col md:flex-row items-left justify-center">
       {/* Left Section */}
@@ -52,6 +104,8 @@ export function ContactUs() {
             <input
               type="text"
               className="border border-gray-300 rounded-md p-2"
+              onChange={(e) => setFname(e.target.value)}
+              placeholder="First Name"
             />
           </motion.div>
           <motion.div
@@ -64,6 +118,8 @@ export function ContactUs() {
             <input
               type="text"
               className="border border-gray-300 rounded-md p-2"
+              onChange={(e) => setLname(e.target.value)}
+              placeholder="Last Name"
             />
           </motion.div>
         </div>
@@ -77,6 +133,8 @@ export function ContactUs() {
           <input
             type="email"
             className="border border-gray-300 rounded-md p-2"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
           />
         </motion.div>
         <motion.div
@@ -89,6 +147,8 @@ export function ContactUs() {
           <input
             type="phone"
             className="border border-gray-300 rounded-md p-2"
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone Number"
           />
         </motion.div>
         <motion.div
@@ -102,6 +162,8 @@ export function ContactUs() {
             rows="4"
             cols="50"
             className="border border-gray-300 rounded-md p-2"
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Message"
           ></textarea>
         </motion.div>
         <motion.button
@@ -109,10 +171,19 @@ export function ContactUs() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 1.2 }}
+          onClick={handleSubmit}
         >
           Submit
         </motion.button>
       </motion.div>
+      {/* toast */}
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
     </div>
   );
 }

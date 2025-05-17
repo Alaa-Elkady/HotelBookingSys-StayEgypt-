@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 export function Toast({ message, type, onClose }) {
   const colors = {

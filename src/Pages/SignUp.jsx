@@ -223,6 +223,7 @@ export function SignUp() {
             <select
               className="border border-white text-[#2c4c74] rounded-md p-2 bg-white"
               onChange={select.onchange}
+              
             >
               {select.options.map((option, idx) => (
                 <option key={idx} value={option.toLowerCase()}>

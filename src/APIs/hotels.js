@@ -1115,7 +1115,7 @@ export const Hotels= [
     "id": "38",
     "HotelName": "Horus Resort Faiyum",
     "HotelLocation": "Faiyum",
-    "HotelPrice": "7.500",
+    "HotelPrice": 7.500,
     "HotelRating": "4.5",
     "HotelRooms": "120",
     "HotelImage": "https://lh6.googleusercontent.com/proxy/kaTu1zdq6Wn1oSBY3nZQGb9FoRlNfMpMnnVf0sWx_hA3e9Skg-PEmjuvpFBP6dInYuuttvZRmZUKMmweRT-6vA7NvZQOKg",

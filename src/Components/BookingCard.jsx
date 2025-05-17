@@ -1,5 +1,9 @@
-
-export function BookingCard({ booking, guestId, onUpdateStatus, isActionable }) {
+export function BookingCard({
+  booking,
+  guestId,
+  onUpdateStatus,
+  isActionable,
+}) {
   return (
     <div className="p-4 m-4 w-full max-w-[800px] flex flex-col md:flex-row items-center rounded-lg shadow-lg">
       <div className="w-full md:w-[200px] h-[200px] mb-4 md:mb-0">

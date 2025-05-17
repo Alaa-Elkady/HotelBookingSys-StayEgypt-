@@ -69,18 +69,23 @@ export function Header() {
         <div className="flex items-center">
           <Link to={`/profile/${guest.id}`} className="cursor-pointer">
             <i className="fa-solid fa-user text-[#2c4c74] mr-4"></i>
+            <span
+              style={{ fontFamily: "Kaushan Script" }}
+              className="text-[#2c4c74] mr-4"
+            >
+              {guest.FirstName + " " + guest.LastName}
+            </span>
           </Link>
-          <span className="text-[#2c4c74] mr-4">{guest.FirstName}</span>
 
           <button
             onClick={() => dispatch(logoutGuest())}
-            className="bg-[#2c4c74] text-white px-4 py-2 rounded-full hover:bg-[#1e3552] transition"
+            className="text-[#2c4c74] text-xl px-4 py-2 rounded-full cursor-pointer hover:animate-pulse transition"
           >
             <i className="fa-solid fa-right-from-bracket"></i>
           </button>
         </div>
       )}
-      
+
       {/* mobile menu */}
       <div
         className="text-[#2c4c74] md:hidden text-2xl cursor-pointer relative"
